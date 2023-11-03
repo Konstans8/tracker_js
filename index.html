@@ -16,25 +16,16 @@
             <img src="./img/Logo.svg" alt="Logo Habbit App" class="logo">
             <nav class="menu">
                 <div class="menu__list">
-                    <!-- <button class="menu__item menu__item_active">
-                        <img src="./img/Dumbbell_blue.svg" alt="dumbbell">
-                    </button>
-                    <button class="menu__item" menu-habbit-id="1">
-                        <img src="./img/Water.svg" alt="Water">
-                    </button>
-                    <button class="menu__item">
-                        <img src="./img/Group.svg" alt="eat">
-                    </button> -->
 
                 </div>
-                <button class="menu__add">
+                <button class="menu__add" onclick="togglePopup()">
                     <img src="./img/Add.svg" alt="menu_add">
                 </button>
             </nav>
         </div>
         <div class="content">
             <header>
-                <h1 class="h1">___</h1>
+                <h1 class="h1"></h1>
                 <div class="progress">
                     <div class="progress__text">
                         <div class="progress__name">Progress</div>
@@ -49,14 +40,46 @@
                 <div id="days"></div>
                     <div class="habbit">
                         <div class="habbit__day">Day _</div>
-                        <form class="habbit__form">
-                            <input class="input_icon" type="text" placeholder="Comment">
+                        <form class="habbit__form" onsubmit="addDays(event)">
+                            <input name="comment" class="input_icon" type="text" placeholder="Comment">
                             <img class="input__icon" src="./img/comment.svg" alt="comment">
-                            <button class="button">Right!</button>
+                            <button class="button" type="submit">Right!</button>
                         </form>
                     </div>
             </main>
         </div>
+        <div class="cover cover_hidden" id="add-habbit-popup">
+            <div class="popup">
+              <h2>New habbit</h2>
+              <div class="icon-label">Icon</div>
+              <div class="icon-select">
+                <button class="icon icon_active" onclick="setIcon(this, 'sport')">
+                  <img src="./img/sport.svg" alt="Sport" />
+                </button>
+                <button class="icon" onclick="setIcon(this, 'water')">
+                  <img src="./img/Water.svg" alt="Drink" />
+                </button>
+                <button class="icon" onclick="setIcon(this, 'food')">
+                  <img src="./img/food.svg" alt="Eat" />
+                </button>
+              </div>
+              <form class="popup__form" onsubmit="addHabbit(event)">
+                <input type="text" name="name" placeholder="Name" />
+                <input
+                  type="text"
+                  name="icon"
+                  hidden
+                  placeholder="Icon"
+                  value="sport"
+                />
+                <input type="number" name="target" placeholder="point" />
+                <button class="button" type="submit">Add</button>
+              </form>
+              <button class="popup__close" onclick="togglePopup()">
+                <img src="./img/close.svg" alt="Close popup" />
+              </button>
+            </div>
+          </div>
     </section>
 </body>
 </html>

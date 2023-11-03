@@ -15,5 +15,12 @@
         "name": "good food",
         "target": 10,
         "days": [{"comment": "Its cool"}]
+    },
+    {
+        "id": 3,
+        "icon": "Water",
+        "name": "Aqua",
+        "target": 10,
+        "days": [{"comment": "Life is beautiful"}]
     }
 ]
