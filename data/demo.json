@@ -1,0 +1,19 @@
+[
+    {
+        "id": 1,
+        "icon": "sport",
+        "name": "run",
+        "target": 10,
+        "days": [
+            {"comment": "My first comment for app"},
+            {"comment": "Second comment for app"}
+        ]
+    },
+    {
+        "id": 2,
+        "icon": "food",
+        "name": "good food",
+        "target": 10,
+        "days": [{"comment": "Its cool"}]
+    }
+]
