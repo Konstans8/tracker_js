@@ -11,6 +11,10 @@ const page = {
         h1: document.querySelector('.h1'),
         progressPercent: document.querySelector('.progress__percent'),
         progressCoverBar: document.querySelector('.progress__cover-bar')
+    },
+    content: {
+        daysContainer: document.getElementById('days'),
+        nextDay: document.querySelector('.habbit__day')
     }
 
 }
@@ -63,9 +67,6 @@ function rerenderMenu(activeHabbit) {
 
 
 function renderHead(activeHabbit) {
-    if(!activeHabbit) {
-        return;
-    }
     page.header.h1.innerHTML = activeHabbit.name;
     const progress = activeHabbit.days.length / activeHabbit.target > 1
         ? 100
@@ -74,10 +75,29 @@ function renderHead(activeHabbit) {
     page.header.progressCoverBar.setAttribute('style', `width: ${progress}%`)
 }
 
+function rerenderContent(activeHabbit) {
+    page.content.daysContainer.innerHTML = '';
+    for(const index in activeHabbit.days) {
+        const element = document.createElement('div');
+        element.classList.add('habbit');
+        element.innerHTML = `<div class="habbit__day">Day ${Number(index) + 1}</div>
+        <div class="habbit__comment">${activeHabbit.days[index].comment}</div>
+        <button class="habbit__delete">
+            <img src="./img/shape.svg" alt="Delete day ${index + 1}">
+        </button>`;
+        page.content.daysContainer.appendChild(element)
+    }
+    page.content.nextDay.innerHTML = `Day ${activeHabbit.days.length + 1}`
+}
+
 function rerender(activeHabbitId) {
     const activeHabbit = habbits.find(habbit => habbit.id === activeHabbitId)
+    if(!activeHabbit) {
+        return;
+    }
     rerenderMenu(activeHabbit)
     renderHead(activeHabbit)
+    rerenderContent(activeHabbit)
 }
 
 
